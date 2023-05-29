@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crowd Counting</title>
+    <style>
+        body {
+            background-color: #f1f1f1; 
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .upload-form {
+            border: 2px solid #41c65e; 
+            padding: 20px;
+            background-color: #bfcbd4; 
+        }
+        .div1 {
+            border: 5px outset rgb(24, 18, 57);
+            background-color: lightblue;    
+            text-align: center;
+        }
+        body {
+          background-color: #ECF6F7;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+    <h2>video visualizer</h2>
+    </div>
+    <div class="container">
+        <div class="upload-form">
+            <h2>Upload Video</h2>
+                <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <button type="submit">Upload</button>
+                </form>
+          </div>
+  </div>
+</body>
+</html>
