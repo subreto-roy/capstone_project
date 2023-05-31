@@ -1,7 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
     <title>Crowd Counting</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css" integrity="sha384-INSERT_INTEGRITY_VALUE_HERE" crossorigin="anonymous">
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+    
     <style>
         body {
             background-color: #f1f1f1; 
@@ -30,18 +47,91 @@
     </style>
 </head>
 <body>
-    <div class="div1">
-    <h2>video visualizer</h2>
-    </div>
-    <div class="container">
-        <div class="upload-form">
-            <h2>Upload Video</h2>
-                <form method="post" enctype="multipart/form-data">
-                  {% csrf_token %}
-                  {{ form.as_p }}
-                  <button type="submit">Upload</button>
-                </form>
+  <div class="hero_area ">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" >
+            <!--img src="images/logo.png" alt=""-->
+          </a>
+          <div class="" id="">
+            <div class="User_option">
+              <form class="form-inline my-2  mb-3 mb-lg-0">
+                <input type="search" placeholder="Search">
+                <button class="btn my-sm-0 nav_search-btn" type="submit"></button>
+              </form>
+            </div>
+
+            <div class="custom_menu-btn">
+              <button onclick="openNav()">
+                <span class="s-1">
+
+                </span>
+                <span class="s-2">
+
+                </span>
+                <span class="s-3">
+
+                </span>
+              </button>
+            </div>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact Us</a>
+              </div>
+            </div>
           </div>
-  </div>
+        </nav>
+      </div>
+    </header>
+    <section class="slider_section">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <!-- Indicators code here -->
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-5 offset-md-1">
+                    <div class="detail-box">
+                      <div class="number">
+                        <h5></h5>
+                      </div>
+                      <h1>
+                        CrowdVisionNet <br>
+                        <span>Make Counting Easier</span>
+                      </h1>
+                      <p>Please Upload crowd video.</p>
+                      <div class="btn-box">
+                        <div class="upload-form">
+                          <h2>Upload Video</h2>
+                          <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="img-box">
+                      <img src="{% static 'images/slider-img.png' %}" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Rest of the carousel items -->
+          </div>
+        </div>
+      </section>
+      
+<!-- end slider section -->
+      
 </body>
 </html>

@@ -244,7 +244,7 @@ def process_frame(model, frame):
 
 
 def process_video(model, video_path):
-    # Open the video file
+   
     video_capture = cv2.VideoCapture(video_path)
 
     count = 0
@@ -252,17 +252,17 @@ def process_video(model, video_path):
     total_count = 0
 
     while True:
-        # Read the next frame
+        
         ret, frame = video_capture.read()
 
-        # If the frame could not be read, then we have reached the end of the video
+        
         if not ret:
             break
 
-        # Resize the frame to 50% of its original size
+       
         frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5)
 
-        # Process the frame
+        
         frame_count, density_map = process_frame(model, frame)
         count += 1
 
@@ -270,29 +270,29 @@ def process_video(model, video_path):
             total_count = frame_count
             frame_count = 0
 
-        # Prepare the text string
+        
         text = f'{total_count} people detected'
 
-        # Display the count on the frame (this creates the outline)
-        cv2.putText(frame, text, (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 5) # 4 is the thickness
+        
+        cv2.putText(frame, text, (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 5) 
 
-        # Display the count on the frame (this is the main text)
-        cv2.putText(frame, text, (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 1) # 2 is the thickness
+        
+        cv2.putText(frame, text, (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 1) 
 
-        # Show the video
+        
         cv2.imshow('Video', frame)
 
-        # Show the density map
+        
         cv2.imshow('Density Map', density_map)
 
-        # Quit if the user presses 'q'
+        
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
-    # Release the video file
+    
     video_capture.release()
 
-    # Destroy the video window
+    
     cv2.destroyAllWindows()
 
     return count
@@ -301,13 +301,13 @@ import os
 from django.conf import settings
 
 def handle_uploaded_video(video_file):
-    # Generate a unique file name
+   
     file_name = video_file.name
     file_path = os.path.join(settings.MEDIA_ROOT, file_name)
 
-    # Open the file in write mode
+    
     with open(file_path, 'wb') as destination:
-        # Iterate over the uploaded file chunks and save them to the destination
+        
         for chunk in video_file.chunks():
             destination.write(chunk)
 
@@ -324,7 +324,7 @@ def process_video_view(request):
             video_file = form.cleaned_data['video']
             video_path = handle_uploaded_video(video_file)
 
-            # Load the model and process the video
+            
             model = CrowdCountingModel()
             model.to(device)
             #model.load_state_dict(torch.load('video/models_path/VGG16_multiscale_pyramid_Attention_Network_V2_best_6.pth'))
@@ -348,13 +348,13 @@ def process_webcam(model):
     total_count = 0
 
     while True:
-        # Read the next frame from the webcam
+       
         ret, frame = video_capture.read()
 
-        # Resize the frame to 50% of its original size
-        frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5)
+        
+        frame = cv2.resize(frame, (0, 0), fx=0.7, fy=0.7)
 
-        # Process the frame
+        
         frame_count, density_map = process_frame(model, frame)
         count += 1
 
@@ -362,14 +362,14 @@ def process_webcam(model):
             total_count = frame_count
             frame_count = 0
 
-        # Prepare the text string
+        
         text = f'{total_count} people detected'
 
         # Display the count on the frame (this creates the outline)
-        cv2.putText(frame, text, (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 5) # 4 is the thickness
+        cv2.putText(frame, text, (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 5) 
 
         # Display the count on the frame (this is the main text)
-        cv2.putText(frame, text, (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 1) # 2 is the thickness
+        cv2.putText(frame, text, (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 1) 
 
         # Show the frame
         cv2.imshow('Webcam', frame)
@@ -381,20 +381,20 @@ def process_webcam(model):
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
-    # Release the webcam
+   
     video_capture.release()
 
-    # Destroy the windows
+    
     cv2.destroyAllWindows()
 
 def process_webcam_view(request):
-    # Load the model
+    
     model = CrowdCountingModel()
     model.to(device)
     model.load_state_dict(torch.load('video/models_path/VGG16_multiscale_pyramid_Attention_Network_V2_best_6.pth', map_location=torch.device('cpu')))
     model.eval()
 
-    # Process the webcam frames
+    
     process_webcam(model)
     
     return render(request, 'welcome.html')

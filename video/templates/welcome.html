@@ -1,48 +1,251 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Crowd Counting</title>
-    <style>
-        body {
-            background-color: #f1f1f1;
-            background-image: url("{% static 'image/image.jpg' %}");
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        
-       .upload-form {
-            border: 2px solid #41c65e; 
-            padding: 20px;
-            background-color: #bfcbd4; 
-        } 
-        .div1 {
-            border: 5px outset rgb(24, 18, 57);
-            background-color: lightblue;    
-            text-align: center;
-        }
-    </style>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Video visualizer</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+  
 </head>
+
 <body>
-   
-    <div class="div1">
-        <h2>Crowd Vision: A Machine Learning System for Real-time Crowd Density Estimation</h2>
-    </div>
-    <div class="container">
-        <div class="upload-form">
-            <a href="{% url 'process_video_view' %}"><button type="button" class="btn btn-success">Video upload</button>
-            <a href="{% url 'process_webcam_view' %}"><button type="button" class="btn btn-success">Web Camere</button>
+  <div class="hero_area ">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" >
+            <!--img src="images/logo.png" alt=""-->
+          </a>
+          <div class="" id="">
+            <div class="User_option">
+              <form class="form-inline my-2  mb-3 mb-lg-0">
+                <input type="search" placeholder="Search">
+                <button class="btn my-sm-0 nav_search-btn" type="submit"></button>
+              </form>
+            </div>
+
+            <div class="custom_menu-btn">
+              <button onclick="openNav()">
+                <span class="s-1">
+
+                </span>
+                <span class="s-2">
+
+                </span>
+                <span class="s-3">
+
+                </span>
+              </button>
+            </div>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact Us</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section class="slider_section">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-5 offset-md-1">
+                  <div class="detail-box">
+                    <div class="number">
+                      <h5>
+                        
+                      </h5>
+                    </div>
+                    <h1>
+                      CrowdVisionNet <br>
+                      <span>
+                        Make Counting Easier
+                      </span>
+                    </h1>
+                    <p>
+                      Please Select Your Option.
+                    </p>
+                    <div class="btn-box">
+                     <a href="{% url 'process_video_view' %}" class="btn-1">
+                        Upload Video
+                      </a> 
+                      
+                       <a href="{% url 'process_webcam_view' %}" class="btn-2">
+                        Live Camera
+                      </a> 
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="images/slider-img.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="images/slider-img.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+    </section>
+    <!-- end slider section -->
+  </div>
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding">
+    <div class="container">
+      <div class="detail-box">
+        <div class="heading_container">
+          <img src="images/heading-img.png" alt="">
+          <h2>
+            About Us
+          </h2>
+        </div>
+        <p>
+          Welcome to Team Delta Duck!<br>
+          
+          <p>We are a group of three students from the University of Liberal Arts Bangladesh (ULAB). Team Delta Duck was formed as part of our final semester project.
+            <p>
+          Our goal is simple: to develop practical solutions that have a positive impact. With our expertise in computer science and engineering, we are dedicated to tackling real-world challenges.<p>
+          Thank you for visiting our project, and we appreciate your support!<p>
+
+        </p>
+        <div class="btn-box">
+          <a href="">
+            
+            <img src="images/link-arrow.png" alt="">
+          </a>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- end about section -->
+
+  <!-- animal section -->
+
+  <section class="animal_section layout_padding">
+    <div class="container">
+      <div class="animal_container">
+        <div class="box b1">
+          <div class="img-box">
+            <img src="{% static 'images/asif.png' %}">
+          </div>
+          <div class="detail-box">
+            <h5>
+              Asif Mahmud
+            </h5>
+            <p>
+              ID:181014010
+            </p>
+            <p>
+              CSE,ULAB
+            </p>
+          </div>
+        </div>
+        <div class="box b2">
+          <div class="img-box">
+          <img src="{% static 'images/minar.jpg' %}">
+
+          </div>
+          <div class="detail-box">
+            <h5>
+              Minar Mahmud
+            </h5>
+            <p>
+              ID:181014047
+            </p>
+            <p>
+              CSE,ULAB
+            </p>
+          </div>
+        </div>
+        <div class="box b1">
+          <div class="img-box">
+            <img src="{% static 'images/subreto.png' %}" height="300" alt="Subreto Image">
+
+          </div>
+          <div class="detail-box">
+            <h5>
+              Subreto Roy
+            </h5>
+            <p>
+             ID:203014017
+            </p>
+            <p>
+              CSE,ULAB
+            </p>
+          </div>
+        </div>
+        <div class="box b2">
+          <div class="img-box">
+            <img src="{% static 'images/sir.jpg' %}">
+          </div>
+          <div class="detail-box">
+            <h5>
+              Bijan Paul
+            </h5>
+            <p>
+              Senior Lecturer, University of Liberal University
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script>
+    function openNav() {
+      document.getElementById("myNav").classList.toggle("menu_width")
+      document.querySelector(".custom_menu-btn").classList.toggle("menu_btn-style")
+    }
+  </script>
+
 </body>
+
 </html>
